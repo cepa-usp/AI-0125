@@ -1,0 +1,250 @@
+\documentclass[fleqn,12pt]{article}
+    \usepackage[ansinew]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{bookman}
+    \usepackage[brazil]{babel}
+    \usepackage{xcolor}
+    \usepackage{amsmath}
+    \usepackage{amsfonts}
+    \usepackage[margin=2cm]{geometry}
+    \usepackage{txfonts}
+    \usepackage{xspace}
+    \usepackage{url}
+    \usepackage{indentfirst}
+    \usepackage{paralist}
+    \usepackage[squaren]{SIunits}
+		\usepackage{graphicx}    
+    
+    % Minhas definições
+    \newenvironment{ct}{\begin{quotation}\color{red!30!black}\sffamily\footnotesize}{\end{quotation}} % Comentários técnicos
+    \newenvironment{cp}{\begin{quotation}\color{green!30!black}\sffamily\footnotesize}{\end{quotation}} % Comentários didático-pedagógicos
+    \newcommand\ctc[1]{\textcolor{red!30!black}{{\sffamily\footnotesize#1}}} % Comentário técnico curto
+    \newcommand\cpc[1]{\textcolor{green!30!black}{{\sffamily\footnotesize#1}}} % Comentário didático-pedagígico curto
+    \newcommand\foreign[1]{\textsl{#1}}
+    \newcommand\etc{\foreign{etc}}
+    \newcommand\textualproceed{\textcolor{green}{$\medbullet$}}
+    \newcommand\proceed{\ifmmode\text{ \textualproceed}\else\textualproceed\xspace\fi}
+    \newcommand\detect{\textcolor{red}{$\medbullet$}\xspace}
+    \newcommand\pt{\ensuremath{(x,y)}\xspace}
+    \newcommand\eg{\foreign{eg}}
+    \newcommand\code[1]{\textsf{#1}}
+    \newcommand\ie{\foreign{ie}}
+    \newcommand\condicional[2]{$\lfloor$%
+			\textsf{\textcolor{blue}{{\footnotesize #1}}}
+				$\leadsto$ #2%
+				$\rfloor$}
+		\newcommand\answerbox{\raisebox{\depth}{\fbox{\phantom{A}\qquad}}}
+		\let\ovec=\vec
+		\renewcommand\vec[1]{\mathbf{#1}}
+		
+	
+    \newcommand\ptzero{\ensuremath{(x_0,y_0)}\xspace}
+    \newcommand\forum[1]{\colorbox{yellow}{Discutir no fórum: #1}} 
+		\renewcommand\emph[1]{\textbf{#1}}
+
+		\newcommand\compass{\includegraphics[height=2ex]{figures/bt05}}
+		\newcommand\newvec{\includegraphics[height=2ex]{figures/bt04}}
+		\newcommand\particle{\includegraphics[height=2ex]{figures/bt07}}
+		\newcommand\ptmark{\includegraphics[height=2ex]{figures/bt01}}
+
+
+    % Título e autor
+    \title{Roteiro do Objeto de Aprendizagem AI-0125}
+    \author{Dr. Ivan Ramos Pagnossin\thanks{irpagnossin.elearning@gmail.com}}
+
+    \hyphenation{}
+
+\begin{document}
+
+  \maketitle
+  
+  \begin{abstract}
+  	Este é o roteiro de produção e de orientação aos educadores do Objeto de Aprendizagem AI-0125, desenvolvido para o tópico 4 (Campos e suas propriedades) da disciplina de Fundamentações Matemáticas II (PLC0016) do módulo 2 do curso a distância de Licenciatura em Ciências da USP, do convênio UNIVESP.
+  
+  	No que segue, o texto em preto é aquele que será apresentado para o(a) cursista. O texto em \cpc{verde} é destinado à equipe de educadores e pedagogos, e o texto em \ctc{vermelho} é destinado à equipe técnica, de produção do OA.
+  	
+  	Ao longo do texto, os colchetes [\qquad] indicam campos os quais o(a) cursista deve fornecer uma resposta, em geral respondendo a uma questão anterior. E os símbolos entre $\langle$ e $\rangle$ representam valores numéricos que são preenchidos automaticamente pelo \foreign{software}.
+  	
+  	Este documento pode ainda sofrer modificações.
+  	
+  \end{abstract}
+    
+	\begin{ct}	
+		\emph{Atenção}: criar o HTML de modo que, se a execução de Javascript estiver desativada, nada aparece, a não ser a mensagem: ``Você deve permitir a execução de código Javascript para realizar esta atividade \foreign{online}. Veja \url{aqui} como fazer.''
+	\end{ct}
+
+	\section*{Início da atividade \ctc{(o título não aparece no OA)}}
+
+	Caro aluno(a), antes de executar esta atividade \foreign{online} estude o tópico ``Campos e suas propriedades'', no texto de referência. Utilize o fórum deste tópico para discutir suas conclusões, dificuldades e também para auxiliar seus colegas. \ctc{Este texto deve aparecer na descrição do SCO, no \code{imsmanifest.xml}.}
+    
+    %--------------------
+    \subsection*{Frame 1}
+    
+    \text{Caro aluno(a)}, o objetivo desta atividade é esclarecer o conceito de campo vetorial e explorar duas maneiras de representá-lo. Ademais, veremos brevemente um campo vetorial muito importante: o gradiente de uma função escalar $f$, representado por $\vec\nabla f$.
+    
+    Como você aprendeu, uma função $f$ de duas variáveis é uma regra que relaciona o par ordenado $(x,y)$ a um número, representado por $f(x,y)$. Vimos isto no contexto em que $x$ e $y$ representavam os lados de um retângulo e $f(x,y) = xy$, sua área. Outra possibilidade é, ao invés de um número, associar $(x,y)$ a outro par ordenado. Por exemplo:
+    \begin{equation*}
+    (x,y) \to (xy, x + y).
+    \end{equation*}
+    
+    Assim, dado um retângulo $(x,y)$ podemos calcular sua área ($xy$) e seu semi-perímetro ($x + y$), e representar essas duas propriedades como um par ordenado.
+    
+    Se \emph{interpretarmos} os pares acima como vetores, podemos reescrever a relação acima de uma forma mais compacta, embora equivalente: $\vec r \to \vec F(\vec r)$, onde $\vec r = (x,y)$ e $\vec F(\vec r) = (xy, x + y)$. Deste modo, $\vec F$ é o \emph{nome} da regra que relaciona $\vec r$ com $\vec F(\vec r)$, analogamente a $f$.
+
+		
+		            
+            
+    \begin{ct}
+    	Quando executado num LMS, substituir ``Caro aluno(a)'' pelo nome do(a) aluno(a), acessível através da propriedade \code{cmi.learner\_name} do SCORM.
+    \end{ct}
+    
+    \begin{cp}
+    	Uma questão de menor importância que pode ser explorada no fórum é o porquê de usarmos semi-perímetro ao invés de perímetro. A razão é apenas simplicidade nas expressões: como perímetro e semi-perímetro se relacionam por um fator constante (2), o que vale para um vale para o outro. Assim, do ponto de vista qualitativo, podemos trabalhar com semi-perímetro e expandir nossas conclusões para o perímetro.
+    \end{cp}
+    
+    %--------------------
+    \subsection*{Frame 2}
+    
+    Compreenda que $\vec F(\vec r)$ não é \emph{um} vetor, mas uma infinidade deles (tantos quanto forem $\vec r$), permeando todo o plano cartesiano. Por este motivo, dizemos que $\vec F(\vec r)$ é mais que um vetor; é um \emph{campo vetorial}.
+    
+    Veja o plano cartesiano (pressione o botão ``área de exploração''): arraste o \foreign{mouse} sobre ele e observe $\vec F(\vec r)$ em cada ponto. Note como ele varia dependendo das coordenadas $x$ e $y$ do mouse (o vetor $\vec r$). De fato, a componente $x$ de $\vec F(\vec r)$ é dada por $xy$ (a área do retângulo), enquanto a componente $y$ é definida por $x + y$ (o semi-perímetro).
+    
+    \paragraph{obs.:} apesar de citarmos o exemplo do retângulo, não vamos mais nos preocupar com este problema em particular. Por este motivo, o domínio de $\vec F$ agora é todo o plano cartesiano ($\mathbb{R}^2$), sem restrições.
+    
+    \paragraph{obs.:} $f(x,y)$ também ``permeia'' todo o plano cartesiano, e por isso podemos chamá-lo de \emph{campo escalar}. Campos vetoriais e escalares são muito comuns nas ciências, como o campo magnético da Terra (vetorial) e a pressão atmosférica (escalar).
+    
+    \begin{cp}
+    	Para discutir no fórum: o que distingue um campo escalar de um campo vetorial?
+    \end{cp}
+    
+    %--------------------
+    \subsection*{Frame 3}
+    
+    Podemos \emph{representar} um campo vetorial desenhando vários vetores $\vec F(\vec r)$ espalhados pelo plano cartesiano. Assim podemos ``enxergar'' este campo. Vamos fazer isso: escolha um ponto do plano cartesiano e calcule $\vec F(\vec r)$ ali:
+    \begin{equation*}
+    \vec F([\qquad],[\qquad]) = ([\qquad], [\qquad]).
+    \end{equation*}
+    
+    \paragraph{dica:} escolha um ponto próximo da origem (mas diferente dela) para facilitar o passo seguinte.
+    
+    \begin{ct}
+    	Antes de o usuário preencher os campos de texto acima, eles devem exibir os textos $x$, $y$, $xy$ e $x+y$, respectivamente.
+    \end{ct}
+    
+    \subsection*{Frame 4}
+    
+    Agora vamos representar este vetor no plano cartesiano: arraste o botão \newvec para o plano. Isto criará um vetor arbitrário. Em seguida, arraste a cauda deste vetor para a posição $(x,y)$ que você escolheu e redimensione-o (pela ponta) de modo que a componente $x$ seja $xy$ e a componente $y$ seja $x + y$.
+    
+    \paragraph{dica:} $\vec r$ e $\vec F(\vec r)$ aparecem ao arrastar a cauda e a ponta do vetor, respectivamente.
+    
+    \subsection*{Frame 5}
+    
+		Agora crie outros 5 (ou mais) vetores $\vec F(\vec r)$ distintos para exercitar.
+    
+    \subsection*{Frame 6}
+    
+    Observe no plano cartesiano que adicionamos os vetores corretos, em vermelho, junto daqueles que você calculou. Compare-os.
+        
+    \subsection*{Frame 6b}
+    
+    Se você contiuar criando outros vetores, obterá algo parecido com o que agora apresentamos no plano cartesiano (pressione o botão ``área de exploração'').
+    
+    Embora nós tenhamos começado esta atividade com o já conhecido problema do retângulo, geralmente utilizamos campos vetoriais para representar \emph{grandezas vetoriais}, isto é, aquelas que tem direção e intensidade, como velocidade, força \etc. Imagine, por exemplo, que o campo vetorial em questão representasse o fluxo de água numa superfície, ou ainda o tráfego urbano...
+    
+    \begin{ct}
+    	Exibir o campo completo.
+    \end{ct}
+        
+    \subsection*{Frame 7}
+    
+		Agora você já sabe o que é um campo vetorial e como podemos representá-lo. Mas vamos além disso: o plano cartesiano agora exibe as curvas de nível da função $f(x,y) = xy$, um campo escalar. A partir dele podemos extrair um campo vetorial muito importante, chamado \emph{gradiente de $f$}:
+		\begin{equation*}
+		\vec\nabla f = (\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}).
+		\end{equation*}
+		
+		Faça as contas e escreva a expressão de $\vec\nabla f$:
+		\begin{equation*}
+		\vec\nabla f = ([\qquad], [\qquad]).
+		\end{equation*}
+		
+		\begin{ct}
+			Os dois text-fields acima devem conter, quando não preenchidos pelo usuário, os valores $\partial f/\partial x$ e $\partial f/\partial y$, respectivamente.
+		\end{ct}
+    
+    \subsection*{Frame 8}
+    
+    \condicional{Errou a resposta}{A resposta correta é $\vec\nabla f = (y,x)$.} O gradiente de $f$ guarda uma relação interessante com as curvas de nível de $f$. Procure identificá-la, criando três ou mais vetores do campo gradiente no plano cartesiano.
+    
+    \paragraph{dica:} escolha pontos $\vec r$ sobre as curvas de nível ou próximos dela, para facilitar.
+    
+    \subsection*{Frame 9}
+    
+    Observe como todos os vetores são \emph{perpendiculares} às curvas de nível. Isto é verdadeiro para qualquer $f$ com duas ou mais variáveis. Assim, $\vec\nabla f$ indica a direção (no nosso caso, no plano cartesiano) em que $f$ varia mais rapidamente (recorde a atividade do tópico 2), daí a sua importância.
+    
+    Pense e responda: se $f(x,y) = xy$ representasse a distribuição de temperatura (\celsius) de uma chapa metálica ($x$ e $y$ em centímetros) e houvesse uma formiga na posição $(2,1)$, em que direção ela deveria andar para aquecer-se mais rapidamente?
+    
+    \begin{cp}
+    	A resposta para a pergunta da formiga é $\vec\nabla f = (1,2)$. Mas atenção: esta direção é correta apenas no ponto $\vec r = (2,1)$. De qualquer modo, a formiga deve sempre andar perpendicularmente às curvas de nível. A atividade fornece um recurso interessante para observar isso: o botão \particle\ permite inserir uma partícula que se move seguindo o campo. Ela pode ser entendida como a formiga do exemplo.
+    \end{cp}
+    
+    O gradiente também pode ser utilizado para calcular a derivada direcional de $f$ (atividade do tópico 2):
+    \begin{equation*}
+    \frac{df}{d\vec u} = \vec u \cdot \vec\nabla f,
+    \end{equation*}
+    onde $\vec u$ é o versor que aponta para a direção que queremos calcular a derivada. Por exemplo, a derivada de $f(x,y) = xy$ no ponto $\vec r = (2,1)$ na direção $\vec u = (1,0)$ é:
+    \begin{equation*}
+    \frac{df}{d\vec u} = (1,0) \cdot (1,2) = \unit{1}{\celsius\per\centi\metre}.
+    \end{equation*}
+    
+    Ou seja, se a nossa formiga andasse na direção $(1,0)$ ela aqueceria apenas \unit{1}{\celsius} a cada centímetro. Mas como ela é uma formiga esperta e andou na direção de $\vec \nabla f = (1,2)$, ela aqueceu
+    \begin{equation*}
+    \frac{df}{d\vec u} = \frac{(1,2)}{\sqrt{5}} \cdot (1,2) = \sqrt{5} = \unit{2,2}{\celsius\per\centi\metre}.
+    \end{equation*}
+    
+    A $\sqrt{5}$ serve para fazer de $\vec u$ um vetor de comprimento unitário, isto é, um versor.
+    
+    \begin{ct}
+    	A partir daqui deixar disponível para o usuário o botão de exibição/ocultação do campo vetorial.
+    \end{ct}
+    
+    \subsection*{Frame 10}
+    
+    Outra maneira de representar um campo vetorial é através das chamadas \emph{linhas de campo}. Nesta representação, desenhamos uma linha contínua, a partir de um ponto $\vec r$ qualquer, cuja inclinação é sempre aquela do campo vetorial.
+    
+    Para entender melhor, clique no botão \particle\ e, em seguida, no plano cartesiano. Esta ação criará uma bolinha que percorre o plano seguindo o campo vetorial. A linha de campo é essencialmente a trajetória dessa bolinha.
+    
+    Vamos construir uma linha do campo vetorial $\vec \nabla f = (y,x)$.
+    
+    \subsection*{Frame 11}
+    
+    Arraste o botão \compass\ para o plano cartesiano, criando ali uma agulha que indica a orientação do campo vetorial. Experimente mover a agulha pelo plano para ver como ela funciona.
+    
+    \paragraph{obs.:} a agulha criada é similar àquela que vemos numa bússola. Mas cuidado: não estamos falando de campo magnético, que é um caso particular de campo vetorial.
+    
+    \begin{ct}
+    	Exibir o campo vetorial.
+    \end{ct}
+    
+    \subsection*{Frame 12}
+    
+    Escolha um ponto $\vec r$ para começar, arraste a agulha para lá e pressione o botão \ptmark. Isto criará uma marca em $\vec r$, indicando que aquele é um ponto da nossa linha de campo. Além disso, aparecerá uma reta com a orientação do campo naquele ponto.
+    
+    \subsection*{Frame 12b}
+    
+    Em seguida, mova ligeiramente a agulha \emph{sobre a reta} até algum outro ponto \emph{próximo} do primeiro e marque-o com \ptmark. Este é o segundo ponto da nossa linha de campo.
+    
+    Quanto menor a distância entre os pontos, melhor será a linha de campo. Isto ocorre por que, na verdade, estamos fazendo uma aproximação da linha de campo através de segmentos de reta.
+    
+    \subsection*{Frame 13}
+    
+    Prossiga desta maneira, criando outros 20 ou mais pontos, sempre tomando o cuidado de dar passos pequenos.
+    
+    \subsection*{Frame 14}
+    
+    Agora exibimos também, no plano cartesiano, a linha de campo correta para o ponto $\vec r$ que você escolheu. Compare-a com a sua e experimente colocar algumas bolinhas em $\vec r$ para ver o que acontece.
+    
+    Finalmente, note que esta representação não leva em consideração a intensidade do campo vetorial. Para resolver isso, costuma-se desenhar mais linhas de campo onde o campo é mais intenso. Mas não vamos fazer isso aqui.
+    
+    \paragraph{obs.:} é possível ter uma ideia da intensidade do campo através da velocidade com que a bolinha percorre o campo. Mas isto só é possível com uma animação.
+    
+\end{document}

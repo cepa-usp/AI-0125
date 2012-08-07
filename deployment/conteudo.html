@@ -1,0 +1,232 @@
+﻿<?xml versioid="n1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+  <head>
+  	<title>Objeto de Aprendizagem</title>
+  	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  	<link type="text/css" href="css/oa.css" rel="stylesheet"/>
+  </head>
+  
+  <body>
+	<div id="conteudo1">
+		<p>Caro aluno(a), o objetivo desta atividade é esclarecer o conceito de campo vetorial e explorar duas maneiras de representá-lo. Ademais, veremos brevemente um campo vetorial muito importante: o gradiente de uma função escalar $$f$$, representado por $$\vec\nabla f$$.</p>
+    
+    <p>Como você aprendeu, uma função $$f$$ de duas variáveis é uma regra que relaciona o par ordenado $$(x,y)$$ a um número, representado por $$f(x,y)$$. Vimos isto no contexto em que $$x$$ e $$y$$ representavam os lados de um retângulo e $$f(x,y) = xy$$, sua área. Outra possibilidade é, ao invés de um número, associar $$(x,y)$$ a outro par ordenado. Por exemplo:<p>
+    
+    <p>$$(x,y) \to (xy, x + y)$$.</p>
+    
+    
+    <p>Assim, dado um retângulo $$(x,y)$$ podemos calcular sua área ($$xy$$) e seu semi-perímetro ($$x + y$$), e representar essas duas propriedades como um par ordenado.</p>
+    
+    <p>Se <b>interpretarmos</b> os pares acima como vetores, podemos reescrever a relação acima de uma forma mais compacta, embora equivalente: $$\vec r \to \vec F(\vec r)$$, onde $$\vec r = (x,y)$$ e $$\vec F(\vec r) = (xy, x + y)$$. Deste modo, $$\vec F$$ é o <b>nome</b> da regra que relaciona $$\vec r$$ com $$\vec F(\vec r)$$, analogamente a $$f$$.</p>
+
+	<p>Compreenda que $$\vec F(\vec r)$$ não é um vetor, mas uma infinidade deles (tantos quanto forem $$\vec r$$), permeando todo o plano cartesiano. 
+	Por este motivo, dizemos que $$\vec F(\vec r)$$ é mais que um vetor; é um campo vetorial. </p>
+	
+	<p>Veja o plano cartesiano	clicando no botão abaixo.</p>
+	
+		<p style="text-align:center;"><input type="button" value="Abrir área de exploração" onClick="loadSlide('n0');"></p>		
+	</div>
+	
+	<div class="etapa" id="n0">
+		<p style="text-align:center;">Essa é a sua área de exploração, onde faremos vários tipos diferentes de simulações. </p>
+		<p style="text-align:center;"><input type="button" value="Clique para prosseguir" onClick="loadSlide('n1');"></p>
+	</div>
+	
+	<div class="etapa" id="n1"><div  class="breakpoint" id="breakpoint_1_n1"></div>
+    Arraste o mouse sobre ele e observe $$\vec F(\vec r)$$ em cada ponto. Note como ele varia dependendo das coordenadas $$x$$ e $$y$$ do mouse (o vetor $$\vec r$$). De fato, a componente $$x$$ de $$\vec F(\vec r)$$ é dada por $$xy$$ (a área do retângulo), enquanto a componente $$y$$ é definida por $$x + y$$ (o semi-perímetro).
+		<p style="text-align:center;"><input type="button" value="Avançar" onClick="loadSlide('n1b');"></p>
+	</div>
+	<div class="etapa" id="n1b">
+    <p>obs.: apesar de citarmos o exemplo do retângulo, não vamos mais nos preocupar com este problema em particular. Por este motivo, o domínio de $$\vec F$$ agora é todo o plano cartesiano ($$\mathbb{R}^2$$), sem restrições.</p>
+		<p style="text-align:center;"><input type="button" value="Avançar" onClick="loadSlide('n1c');"></p>
+	</div>
+	<div class="etapa" id="n1c">
+		<p>obs.: $$f(x,y)$$ também "permeia" todo o plano cartesiano, e por isso podemos chamá-lo de <b>campo escalar</b>. Campos vetoriais e escalares são muito comuns nas ciências, como o campo magnético da Terra (vetorial) e a pressão atmosférica (escalar).</p>
+		<p style="text-align:center;"><input type="button" value="Avançar" onClick="loadSlide('n2');"></p>
+	</div>	
+	
+	
+	<div class="etapa" id="n2"><div  class="breakpoint" id="breakpoint_2_n2"></div>
+		<p>Podemos representar um campo vetorial desenhando vários vetores $$\vec F(\vec r)$$ espalhados pelo plano cartesiano. Assim podemos "enxergar" este campo. </p>
+		<p>Vamos fazer isso: escolha um ponto do plano cartesiano e calcule $$\vec F(\vec r)$$ ali:</p>
+		<p align="center">
+		F(<input type="text" id="n3_tx1" value="x" style="width:30px" />, <input type="text" id="n3_tx2" value="y" style="width:30px" />) = 
+		( <input type="text" id="n3_tx3" value="xy" style="width:30px" />,  <input type="text" id="n3_tx4" value="x+y" style="width:30px" />)		
+		<span id="n3_complemento"><input type="button" value="Responder" onClick="eval_n3(parseFloat($('#n3_tx1').val()), parseFloat($('#n3_tx2').val()), parseFloat($('#n3_tx3').val()), parseFloat($('#n3_tx4').val()))"></span>
+		</p>		
+		</div>
+		
+		
+		
+	</div>	
+
+	<div class="etapa" id="n3_n">		
+		<div class="errada">
+			<p>Resposta incorreta!</p>
+			<div id="n3_correcao">Este conteudo vem da função eval_n3() </div>					
+			<input type="button" value="Avançar" onClick="loadSlide('n4');">		
+		</div>
+
+	</div>	
+	
+	<div class="etapa" id="n3_s">		
+		<div class="correta">
+			<p>Resposta correta!</p>
+			<input type="button" value="Avançar" onClick="loadSlide('n4');">
+		</div>
+		
+	</div>	
+	
+	
+	<div class="etapa" id="n4"><div class="breakpoint" id="breakpoint_3_n4"></div>
+    <p>Agora vamos representar este vetor no plano cartesiano: arraste o botão <img src="figures/bt04.png" width="15" height="15" alt="botão de novo vetor" /> para o plano. Isto criará um vetor arbitrário. Em seguida, arraste a cauda deste vetor para a posição $$(x,y)$$ que você escolheu (<span id="posicaoEx1">(x,y)</span>) e redimensione-o (pela ponta) de modo que a componente $$x$$ seja $$xy$$ e a componente $$y$$ seja $$x + y$$.<br />
+	<span style="font-size:0.8em;">dica: $$\vec r$$ e $$\vec F(\vec r)$$ aparecem ao arrastar a cauda e a ponta do vetor, respectivamente.</span></p>
+	<center><input type="button" value="Avaliar" onClick="eval_n4();"></center>
+	</div>		
+	
+	
+	<div class="etapa" id="n4_n">				
+		 <div class="errada">
+		 <p>Este vetor está incorreto. Reveja seus cálculos e corrija-o antes de prosseguir</p>
+		<center><input type="button" value="Voltar" onClick="loadSlide('n4');"></center>
+		</div>
+	</div>			
+
+	<div class="etapa" id="n4_s">				
+		 <div class="correta">
+		 <p>Correto!</p>
+		<center><input type="button" value="Avançar" onClick="loadSlide('n5');"></center>
+		</div>
+	</div>	
+
+	<div class="etapa" id="n5"><div  class="breakpoint" id="breakpoint_4_n5"></div>
+		 <p>Agora crie outros 5 (ou mais) vetores $$\vec F(\vec r)$$ distintos para exercitar. Adicione-os à área de exploração e, determinada suas posições, ajuste-os de acordo com o campo.</p>
+		<center><input type="button" value="Avançar" onClick="eval_n5();"></center>
+	</div>	
+
+	<div class="etapa" id="n5resposta">
+		 <p>Observe no plano cartesiano que adicionamos os vetores corretos, em vermelho, junto daqueles que
+			você calculou. Compare-os.</p>
+		 <p style="text-align:center;font-size:0.9em;">Nível de acerto: <span id="n5_acerto"></span></p>
+		<center><input type="button" value="Refazer teste" onClick="loadSlide('n5');"><input type="button" value="Avançar" onClick="loadSlide('n6');"></center>
+	</div>		
+
+	<div class="etapa" id="n6">
+	<p style="font-size:0.9em;">Se você contiuar criando outros vetores, obterá algo parecido com o que agora apresentamos no plano
+	cartesiano.</p>
+	<p style="font-size:0.9em;">Embora nós tenhamos começado esta atividade com o já conhecido problema do retângulo, geralmente
+	utilizamos campos vetoriais para representar <b>grandezas vetoriais</b>, isto é, aquelas que tem direção e intensidade, como velocidade, força <i>etc</i>.
+	Imagine, por exemplo, que o campo vetorial em questão representasse o fluxo de água numa superfície, ou ainda o tráfego urbano...</p>
+	<center><input type="button" value="Avançar" onClick="loadSlide('n7');"></center>
+	</div>
+	
+	<div class="etapa" id="n7"><div  class="breakpoint" id="breakpoint_5_n7"></div>
+		 <p  style="font-size:0.9em;">
+		Agora você já sabe o que é um campo vetorial e como podemos representá-lo. Mas vamos além disso: o plano cartesiano agora exibe as curvas de nível da função $$f(x,y) = xy$$, um campo escalar. <br />
+		A partir dele podemos extrair um campo vetorial muito importante, chamado <b>gradiente de $$f$$</b>:<br />		
+		$$\vec\nabla f = (\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y})$$			
+		 </p>		 		 
+		<center><input type="button" value="Avançar" onClick="loadSlide('n7b');"></center>
+	</div>
+	<div class="etapa" id="n7b">
+		 <p  style="font-size:0.9em;">
+				Faça as contas e escreva a expressão de $$\nabla f$$ :
+				$$\nabla f = $$ (<input type="text" value="∂f/∂x" id="n7_tx1" style="width:30px" />, <input type="text" value="∂f/∂y" id="n7_tx2" style="width:30px" />)
+		 </p>		 		 
+		<center><input type="button" value="Avançar" onClick="eval_n7();"></center>
+	</div>
+	
+	<div class="etapa" id="n7_n">				
+		 <div class="errada">
+		 <p>A resposta correta é $$\vec\nabla f = (y,x)$$.</p>
+		<center><input type="button" value="Avançar" onClick="loadSlide('n8');"></center>
+		</div>
+	</div>	
+	<div class="etapa" id="n7_s">		
+		<div class="correta">
+			<p>Resposta correta!</p>
+			<input type="button" value="Avançar" onClick="loadSlide('n8');">
+		</div>
+		
+	</div>
+	
+	<div class="etapa" id="n8"><div  class="breakpoint" id="breakpoint_6_n8"></div>
+	<p>O gradiente de $$f$$ guarda uma relação interessante com as curvas de nível de $$f$$. Procure identificá-la, criando três ou mais vetores do campo gradiente no plano cartesiano.</p>
+	<p>dica: escolha pontos $$\vec r$$ sobre as curvas de nível ou próximos dela, para facilitar.</p>
+		<center><input type="button" value="Avançar" onClick="eval_n8();"></center>
+	</div>	
+	<div class="etapa" id="n8b">
+	    <p>Observe como todos os vetores são <b>perpendiculares</b> às curvas de nível. Isto é verdadeiro para qualquer $$f$$ com duas ou mais variáveis. 
+		Assim, $$\vec\nabla f$$ indica a direção (no nosso caso, no plano cartesiano) em que $$f$$ varia mais rapidamente (recorde a atividade do tópico 2), daí a sua importância. </p>
+		<center><input type="button" value="Avançar" onClick="loadSlide('n8c');"></center>
+	</div>
+	<div class="etapa" id="n8c">
+	    <p>	Pense e responda: se $$f(x,y) = xy$$ representasse a distribuição de temperatura ($$\unit{1}{\celsius}$$) de uma chapa metálica ($$x$$ e $$y$$ em centímetros) e houvesse uma formiga na posição $$(2,1)$$, em que direção ela deveria andar para aquecer-se mais rapidamente?</p>
+		<center><input type="button" value="Avançar" onClick="hideProjector();loadConteudo('conteudo2');"></center>
+	</div>
+	
+
+
+
+	<div id="conteudo2"><!--n9-->
+	<p>O gradiente também pode ser utilizado para calcular a derivada direcional de $$f$$ (atividade do tópico 2):</p>	
+    <p>$$\frac{df}{d\vec u} = \vec u \cdot \vec\nabla f$$,</p>
+    <p>onde <b>u</b> é o versor que aponta para a direção que queremos calcular a derivada. Por exemplo, a derivada de $$f(x,y) = xy$$ no ponto $$\vec r = (2,1)$$ na direção $$\vec u = (1,0)$$ é:</p>    
+    <p>$$\frac{df}{d\vec u} = (1,0) \cdot (1,2) = \unit{1}{\celsius\per\centi\metre}.$$</p>        
+    <p>Ou seja, se a nossa formiga andasse na direção $$(1,0)$$ ela aqueceria apenas $$\unit{1}{\celsius}$$ a cada centímetro. Mas como ela é uma formiga esperta e andou na direção de $$\vec \nabla f = (1,2)$$, ela aqueceu.</p>
+    <p>$$\frac{df}{d\vec u} = \frac{(1,2)}{\sqrt{5}} \cdot (1,2) = \sqrt{5} = \unit{2,2}{\celsius\per\centi\metre}$$.</p>    
+    <p>A $$\sqrt{5}$$ serve para fazer de $$\vec u$$ um vetor de comprimento unitário, isto é, um versor.</p>
+    
+				<center><input type="button" value="Exibir área de exploração" onClick="loadSlide('n10');"></center>
+		
+	</div>
+
+		<div class="etapa" id="n10"><div  class="breakpoint" id="breakpoint_8_n10"></div>
+		    Outra maneira de representar um campo vetorial é através das chamadas <b>linhas de campo</b>. Nesta representação, desenhamos uma linha contínua, a partir de um ponto $$\vec r$$ qualquer, cuja inclinação é sempre aquela do campo vetorial.    
+			Para entender melhor, clique no botão <img src="figures/bt07.png" alt="botão da partícula" /> e, em seguida, no plano cartesiano. Esta ação criará uma bolinha que percorre o plano seguindo o campo vetorial. A linha de campo é essencialmente a trajetória dessa bolinha.   <br />
+			Vamos construir uma linha do campo vetorial $$\vec \nabla f = (y,x)$$.
+		<center><input type="button" value="Avançar" onClick="loadSlide('n11');"></center>
+	</div>	
+	
+	<div class="etapa" id="n11"><div  class="breakpoint" id="breakpoint_9_n11"></div>
+		Arraste o botão <img src="figures/bt05.png" alt="botão do compasso" /> para o plano cartesiano, criando ali uma agulha que indica a orientação do campo vetorial. Experimente mover a agulha pelo plano para ver como ela funciona.<br />    
+		obs: a agulha criada é similar àquela que vemos numa bússola. Mas cuidado: não estamos falando de campo magnético, que é um caso particular de campo vetorial.
+		<center><input type="button" value="Avançar" onClick="loadSlide('n12');"></center>
+	</div>		
+
+	<div class="etapa" id="n12"><div  class="breakpoint" id="breakpoint_10_n12"></div>
+	    <p>Escolha um ponto $$\vec r$$ para começar, arraste a agulha para lá e pressione o botão <img src="figures/bt01.png" alt="botão do marcador" /> Isto criará uma marca em $$\vec r$$, indicando que aquele é um ponto da nossa linha de campo. Além disso, aparecerá uma reta com a orientação do campo naquele ponto.</p>
+		<center><input type="button" value="Avançar" onClick="eval_n12()"></center>
+	</div>			
+
+	<div class="etapa" id="n12b">
+	    <p>Em seguida, mova ligeiramente a agulha <b>sobre a reta</b> até algum outro ponto <b>próximo</b> do primeiro, seguindo a orientação da ponta vermelha da agulha, e marque-o com <img src="figures/bt01.png" alt="botão do marcador" /> . Este é o segundo ponto da nossa linha de campo.    
+		Quanto menor a distância entre os pontos, melhor será a linha de campo. Isto ocorre por que, na verdade, estamos fazendo uma aproximação da linha de campo através de segmentos de reta.</p>
+		<center><input type="button" value="Avançar" onClick="eval_n13()"></center>
+	</div>		
+
+	<div class="etapa" id="n13">
+	    <p>Prossiga desta maneira, criando outros 20 ou mais pontos, sempre tomando o cuidado de dar passos pequenos.</p>
+		<center><input type="button" value="Avançar" onClick="eval_n14();"></center>
+	</div>
+	<div class="etapa" id="n14"><div  class="breakpoint" id="breakpoint_11_n14"></div>
+	    <p>Agora exibimos também, no plano cartesiano, a linha de campo correta para o ponto $$\vec r$$ que você escolheu. Compare-a com a sua e experimente colocar algumas bolinhas em $$\vec r$$ para ver o que acontece.</p>
+		<p style="text-align:center;font-size:0.9em;">Nível de acerto: <span id="n14_acerto"></span></p>
+		<center><input type="button" value="Avançar" onClick="loadSlide('n14b');"></center>
+	</div>
+		
+	<div class="etapa" id="n14b">
+		<p>Finalmente, note que esta representação não leva em consideração a intensidade do campo vetorial. Para resolver isso, costuma-se desenhar mais linhas de campo onde o campo é mais intenso. Mas não vamos fazer isso aqui.</p>    
+		obs: é possível ter uma ideia da intensidade do campo através da velocidade com que a bolinha percorre o campo. Mas isto só é possível com uma animação.
+		<center><input type="button" value="Avançar" onClick="hideProjector();loadConteudo('conteudo3');"></center>
+	</div>		
+	<div id="conteudo3"><!--n9-->
+	<p>Atividade concluída!	Você já pode fechar a janela.</p>
+<br />    
+	
+		
+	</div>	
+  </body>
+</html>

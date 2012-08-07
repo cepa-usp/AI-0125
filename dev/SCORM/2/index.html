@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Objeto de Aprendizagem</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		
+		<link type="text/css" rel="stylesheet" href="css/smoothness/jquery-ui-1.8.13.custom.css"/>
+		<link type="text/css" href="css/sidebar.css" rel="stylesheet" />
+		<link type="text/css" href="css/ai.css" rel="stylesheet"/>
+
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-swfobject.min.js"></script>
+		<script type="text/javascript" src="js/scorm_wrapper.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+		<script type="text/javascript" src="js/ai.js"></script>
+		<script type="text/javascript" src="js/frame_transition.js"></script>
+		<script type="text/javascript" src="js/hooks.js"></script>
+		<script type="text/javascript" src="js/dialog_custom.js"></script>
+		<script type="text/javascript" src="js/jquery.dialogextend.js"></script>
+	</head>
+	
+	<body>
+		<div id="slidebottom" class="slide">
+			<div class="borda fechada"></div>
+			<div class="inner">
+				<div id="ai-container">
+					<a href="http://www.adobe.com/go/getflash">
+						<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Obtenha o Adobe Flash player" />
+					</a>
+				</div>
+			</div>
+		</div>
+		
+		<div id="content">
+    
+			<h1>Campos Vetoriais <span class="completion-message start-invisible">(atividade concluída)</span></h1>
+
+			<noscript>
+				<p id="noscript-message">
+					Esta atividade interativa precisa da sua <a href="http://midia.atp.usp.br/atividades-interativas/shared/html/enabling_js/">permissão</a> para executar código Javascript.
+				</p>
+			</noscript>
+			
+			<div>
+				<span class="init-message start-invisible">
+					Configurando a atividade. Por favor, aguarde...
+				</span>
+				<span id="init-failure-message">
+					Não foi possível configurar a atividade. Informe o <span class="foreign">Help desk</span> sobre isso.
+				</span>
+			</div>
+			
+			
+			
+			<div id="frame-0" class="frame start-invisible">
+				<p>
+					<span id="learner-prename">Caro(a) aluno(a),</span> antes de executar esta atividade online estude o tópico “Derivadas parciais”, no texto de referência, e execute a "Atividade exploratória sobre gráficos, forma implícita, limites e continuidade". Ao longo desta atividade, utilize o fórum deste tópico para discutir com seus colegas e tutores suas conclusões e dificuldades, e mesmo para auxiliar seus colegas.
+				</p>
+			</div>
+			
+			<div id="frame-1" class="frame start-invisible">
+				<p>
+					A atividade começa com um texto explicando que, da mesma forma que associamos um par (x,y) a um número f(x,y), podemos também associar ao mesmo (x,y) um outro par, (f(x,y), g(x,y)). E podemos representá-lo como um campo vetorial. Neste ponto, a área de experimentação exibe o campo vetorial F = (xy, x+y), de modo que f(x,y) = xy (área do retângulo, como nas atividades anteriores) e g(x,y) = x + y (semi-perímetro do retângulo).
+				</p>
+			</div>
+				
+			<div id="frame-2" class="frame start-invisible">	
+				<p>
+					Agora o texto explica a estrutura do campo vetorial exibido. A área de experimentação então oculta o campo vetorial e passa a exibir o vetor na posição do mouse, à medida que o usuário o movimenta. Todas as demais interações são inibidas.
+				</p>
+			</div>
+				
+			<div id="frame-3" class="frame start-invisible">
+				<p>
+					A atividade pede ao aluno que escolha um (x,y) na área do gráfico e que calcule o valor do campo ali. Sua resposta será dada através de dois text fields, representados abaixo pelos colchetes:
+				</p>
+				<p>
+					F(<input id="input-0" name="01" size="10"/>, <input id="input-1" name="02" size="10"/>) = (<input id="input-2" name="03" size="10"/>, <input id="input-3" name="04" size="10"/>)
+				</p>
+				<p>
+					Os dois primeiros colchetes dão x e y, respectivamente. Os outros dois, f(x,y) = xy e g(x,y) = x+y. São esses últimos dois que devem ser avaliados de fato, com tolerância de 10% (PARÂMETRO). Entretanto, caso o valor de (x,y) escolhido não esteja na área do gráfico, apresentar uma caixa de diálogo com a mensagem "Escolha um (x,y) que esteja na área do gráfico (apenas para simplificar)." e esperar uma nova resposta.
+				</p>
+			</div>
+			
+			<div id="frame-4" class="frame start-invisible">
+				<p>
+					<span id="wrong-answer-0" class="wrong-answer start-invisible">A resposta correta é F(<span id="answer-0">??</span>,<span id="answer-1">??</span>) = (<span id="answer-2">??</span>,<span id="answer-3">??</span>).</span>
+					<span id="right-answer-0" class="right-answer start-invisible">Correto.</span> 
+				</p>
+				<p>
+					Caso a resposta dada no frame anterior não esteja correta, apresentar uma caixa de diálogo (usar jQuery) com a mensagem: "Em (x,y) o valor do campo é (f(x,y),g(x,y))." (apresentar valores numéricos). Além disso, é preciso colocar o texto "Resposta correta: em (x,y) o campo é (f(x,y),g(x,y))." (em vermelho. Veja a AI-0122) logo após o text-field do frame anterior.
+				</p>
+				<p>
+					Neste frame a atividade orienta o aluno a representar o campo calculado (o correto) na área de experimentação. O aluno deve (1) criar um novo vetor ou flecha, (2) posicioná-lo em (x,y) e (3) redimensioná-lo de modo que (dx,dy)=(f(x,y),g(x,y)). Apenas as interações necessárias para a criação, edição e remoção dessas flechas devem estar disponíveis (zoom in e out também).
+				</p>
+				<p>
+					Ao pressionar o botão "avançar" e antes de prosseguir para o frame seguinte, averiguar se o aluno acertou 80% (PARÀMETRO) ou mais na criação do vetor. Se não for o caso, apresentar uma caixa de diálogo (jQuery) com a mensagem "Este vetor está incorreto. Reveja seus cálculos e corrija-o antes de prosseguir".
+				</p>
+			</div>
+			
+			<div id="frame-5" class="frame start-invisible">
+				<p>
+					Agora a atividade pede ao aluno que crie 5 (PARÂMETRO) ou mais flechas espalhadas pela área de exploração (além daquela criada no frame anterior).
+				</p>
+				<p>
+					Antes de avaliar a resposta do aluno (botão "avançar"), a atividade (o Javascript, não o Flash!) deve verificar se (1) existem cinco ou mais flechas criadas e (2) se uma flecha qualquer está a mais de 0,5 unidades do gráfico (PARÂMETRO) distante de qualquer outra, nesta ordem. Se a primeira condição não for satisfeita, exibir uma caixa de diálogo (jQuery) com a mensagem "Você deve criar cinco ou mais flechas para prosseguir.". Se a segunda condição não for satisfeita, apresentar a mensagem "As flechas estão muito próximas umas das outras. Afaste-as antes de continuar."
+				</p>
+			</div>
+				
+			<div id="frame-6" class="frame start-invisible">	
+				<p>
+					Na área de exploração agora aparecem as cinco ou mais flechas do campo (a resposta correta), sobrepostas àquelas criadas pelo aluno no frame anterior. Sobre ela, aparece uma caixa de diálogo (jQuery) com a mensagem "Nível de acerto: X%.", onde X é o resultado da avaliação da resposta do aluno, conforme a seção Avaliação das flechas individuais do campo.
+				</p>
+				<p>
+					Aqui é preciso inibir TODAS as interações do aluno com a área de exploração. A única coisa que pode estar ativa é o MOUSE_OVER nas flechas, tanto do campo (resposta) quanto aquelas que ele criou, para que ele possa verificar suas contas.
+				</p>
+				<p>
+					Atenção: neste ponto, se o aluno optar por voltar ao frame anterior (e, com isso, refazer o exercício), é preciso remover todas as flechas criadas no frame anterior (exceto aquela criada no frame 4). Quanto à nota, tomaremos a média de todas as tentativas dele (neste exercício em particular, das flechas).
+				</p>
+			</div>
+				
+			<div id="frame-7" class="frame start-invisible">
+				<p>
+					Agora é preciso limpar a área de exploração (remover todas as flechas), redefinir o campo para F = (y,x) e ocultá-lo. Além disso, o range do gráfico deve ser definido de 0 a 5, tanto em x quanto em y, e as curvas de nível y = z/x devem ser exibidas [z = 1, 4, 9, 16 (PARÂMETROS, os valores de z e a quantidade de curvas de nível)].
+				</p>
+				<p>
+					A atividade pede ao aluno que calcule a expressão do campo vetorial dado por F = (del f/del x, del f/dely), onde f = f(x,y) = xy, a função usada em atividades anteriores. O aluno deve responder isso em dois text fields, representados abaixo pelos colchetes:
+				</p>
+				<p>
+					F = (<input id="input-4" name="05" size="10"/>, <input id="input-5" name="06" size="10"/>)
+				</p>
+				<p>
+					A resposta esperada é F=(y,x), ou seja, o primeiro text field preenchido com y e o segundo, com x. Aceitar também Y e X (maiúsculas), respectivamente.
+				</p>
+			</div>
+			
+			<div id="frame-8" class="frame start-invisible">
+				<p>
+					<span id="wrong-answer-1" class="wrong-answer start-invisible">A resposta correta é F = (<span id="answer-4">??</span>,<span id="answer-5">??</span>).</span>
+					<span id="right-answer-1" class="right-answer start-invisible">Correto.</span> 
+				</p>
+				<p>
+					Caso a resposta dada no frame anterior esteja incorreta, apresentar uma caixa de diálogo com a mensagem "O campo vetorial correto é F = (y,x)." (da forma como está, sem substituir valores) e inserir o texto "Resposta correta: F = (y,x)" (da forma como está) no corpo da atividade, em vermelho (veja a AI-0122). Atenção que esta mensagem deve ser restaurada no próximo acesso à AI.
+				</p>
+				<p>
+					Redefinir o range do gráfico novamente para 0 a 5, em x e y, para o caso de o aluno ter mexido nisso.
+				</p>
+				<p>
+					A atividade pede então que o aluno crie três (PARÂMETRO) ou mais vetores sobre as curvas de nível y = z/x.
+				</p>
+				<p>
+					Antes de prosseguir para o frame seguinte (botão "avançar"), verificar se (1) há ao menos três vetores criados e se (2) o nível de acerto deles é superior a 80% (PARÂMETRO). Se a primeira condição não for satisfeita, apresentar uma caixa de diálogo (jQuery) com a mensagem "Você deve criar três ou mais flechas para prosseguir.". Se a segunda condição não for satisfeita, apresentar uma caixa de diálogo com a mensagem "Os vetores estão incorretos. Corrija-os antes de prosseguir.". Não há avaliação de nota a ser feita aqui.
+				</p>
+			</div>
+			
+			<div id="frame-9" class="frame start-invisible">
+				<p>
+					Apenas explicação. Inibir todas as interações com a área de exploração.
+				</p>
+			</div>
+				
+			<div id="frame-10" class="frame start-invisible">	
+				<p>
+					A partir deste frame a atividade começa a explorar o conceito de linhas de campo. Para isso, remova todas as flechas criadas pelo usuário nos frames anteriores e exiba o campo na grade do gráfico.
+				</p>
+			</div>
+				
+			<div id="frame-11" class="frame start-invisible">
+				<p>
+					A atividade pede ao aluno que pegue a bússola (ponto de prova) e escolha um ponto qualquer da área de exploração para começar. Apenas as ferramentas necessárias para criar, editar e remover o ponto de prova (bússola) deve estar disponíveis.
+				</p>
+			</div>
+			
+			<div id="frame-12" class="frame start-invisible">
+				<p>
+					A atividade orienta o aluno a mover a bússola sobre a linha de indicação de direção, criada no frame anterior.
+				</p>
+				<p>
+					Antes de prosseguir para o frame seguinte (botão "avançar), verificar se o passo dado com a bússola é inferior a 20 pixels (PARÂMETRO). Se não for, exibir uma caixa e diálogo com a mensagem "Reduza um pouco mais o passo ou sua linha de campo ficará incorreta". Repetir este processo até que a condição seja satisfeita.
+				</p>
+			</div>
+			
+			<div id="frame-13" class="frame start-invisible">
+				<p>
+					Agora a atividade instrui o aluno a dar outros 20 (PARÂMETRO) ou mais passos com a bússola.
+				</p>
+				<p>
+					Ao pressionar o botão "avançar", o Javascript (não o Flash!) verifica se há de fato 20 ou mais passos na área de exploração. Se não houver, apresenta uma caixa de diálogo (jQuery) com a mensagem "Você precisa executar mais N passos antes de prosseguir", onde N é o número de passos que ainda faltam para completar 20. Se houver, avalia a resposta do aluno conforme a seção Avaliação da linha de campo.
+				</p>
+			</div>
+				
+			<div id="frame-14" class="frame start-invisible">	
+				<p>
+					Apresenta uma caixa de diálogo com a mensagem "Nível de acerto: X%.", onde X é a avaliação da resposta.
+				</p>
+				<p>
+					Na área de exploração aparece a linha de campo correta, e a atividade orienta o aluno a colocar uma partícula no campo para vê-la seguindo a linha de campo.
+				</p>
+			</div>
+				
+			<div id="frame-15" class="frame start-invisible">
+				<p>
+					Agora TODAS as interações com a área de exploração são liberadas e o campo é redefinido para F = (?,?), análogo ao campo magnético da Terra. Neste ponto a atividade fica livre para o aluno usá-la à vontade: avançar e retroceder nos passos etc. Agora, com cmi.completed = true, a nota enciada para o Moodle não é mais modificada, embora as avaliações explicadas acima continuem funcionando.
+				</p>
+				<p>
+					Neste ponto aparece o botão "recomeçar", ao lado dos botões "avançar" e "voltar". Ao pressioná-lo aparece a mensagem "Você tem certeza de que quer refazer a atividade? Sua nota não será alterada.". Se ele confirmar, joga todos os dados de navegação do aluno fora e recomeça a atividade (exceto cmi.completed e cmi.score).
+				</p>
+			</div>
+			
+			
+				
+		</div>
+		
+		<div class="line-break"></div>
+		
+		<div id="step-forward" class="start-invisible">Avançar</div>
+		<div id="reset" class="start-invisible">Recomeçar</div>
+      
+		<div id="reset-dialog" class="dialog" title="Confirmação">
+			Você tem certeza de que quer recomeçar esta atividade?
+		</div>
+		
+		<div id="finish-dialog" class="dialog" title="Fim da atividade">
+			Você concluiu esta atividade <span class="foreign">online</span> e acertou <span id="score">0</span> de 8 perguntas.
+			Utilize o botão "recomeçar" para refazer estes passos, ou faça outros experimentos na figura, escolhendo outros valores de A, <span class="inline-eq"><img src="images/img30.png" alt="Delta x"/></span> e <span class="inline-eq"><img src="images/img31.png" alt="Delta y"/></span>.
+			Utilize o fórum para propor experimentos, trocar ideias, dúvidas e dificuldades com seus colegas e tutores.
+		</div>
+    
+		<p class="license">
+			Este material foi criado pelo Centro de Ensino e Pesquisa Aplicada (<a href="http://cepa.if.usp.br/" onclick="window.open(this.href);return false;">CEPA</a>) do Departamento de Física Experimental do Instituto de Física da Universidade de São Paulo, campus capital, e é distribuido conforme a licença Creative Commons Atribuição - Uso não-comercial - Compartilhamento pela mesma licença 3.0 Brasil (CC BY-NC-SA 3.0). 
+			Isto significa que você pode compartilhar ou remixar esta obra, segundo esta mesma licença, desde que cite o autor original (CEPA) e sua página web (cepa.if.usp.br). Você NÃO pode usar esta obra, nem variações dela, para fins comerciais (para este propósito, entre em contato com o CEPA).
+		</p>
+	</body>
+</html>
